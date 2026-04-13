@@ -103,7 +103,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_SPACE";
             #binding-cells = <0>;
-            bindings = <&kp SPACE>, <&lg_space>;
+            bindings = <&kp SPACE>, <&lg_tog>;
         };
     };
 
@@ -136,10 +136,10 @@
 
         nav {
             bindings = <
-&kp CAPS  &kp GRAVE          &kp LG(LEFT_ARROW)  &kp UP    &kp LG(RIGHT_ARROW)  &tog 1                                  &kp LA(R)  &kp N7  &kp N8  &kp N9  &kp N0   &trans
-&trans    &kp LC(LA(ENTER))  &kp LEFT            &kp DOWN  &kp RIGHT            &kp LG(LS(C))                           &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp DOT  &trans
-&trans    &trans             &kp LA(LEFT)        &kp CAPS  &kp LA(RIGHT)        &tap_dance_space  &kp DELETE    &none   &kp MINUS  &kp N1  &kp N2  &kp N3  &trans   &trans
-                                                           &trans               &trans            &trans        &trans  &mo 6      &trans
+&kp CAPS  &kp GRAVE          &kp LG(LEFT_ARROW)  &kp UP                       &kp LG(RIGHT_ARROW)  &tog 1                                  &kp LA(R)  &kp N7  &kp N8  &kp N9  &kp N0   &trans
+&trans    &kp LC(LA(ENTER))  &kp LEFT            &kp DOWN                     &kp RIGHT            &kp LG(LS(C))                           &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp DOT  &trans
+&trans    &trans             &kp LA(LEFT)        &kp LA(LG(LC(RIGHT_ARROW)))  &kp LA(RIGHT)        &tap_dance_space  &kp DELETE    &none   &kp MINUS  &kp N1  &kp N2  &kp N3  &trans   &trans
+                                                                              &trans               &trans            &trans        &trans  &mo 6      &trans
             >;
 
             display-name = "Nav";
@@ -160,8 +160,8 @@
             display-name = "Symbols";
             bindings = <
 &trans  &none     &none          &none             &en SQT       &kp RU_DQT                               &kp LPAR          &kp RPAR           &none  &none  &trans  &trans
-&trans  &en PIPE  &en LESS_THAN  &en GREATER_THAN  &kp RU_SEMI   &kp RU_COLON                             &en LEFT_BRACKET  &en RIGHT_BRACKET  &none  &none  &none   &trans
-&trans  &en HASH  &kp RU_BSLH    &kp RU_FSLH       &kp RU_COMMA  &kp RU_DOT    &kp RU_QMARK    &kp UNDER  &en LEFT_BRACE    &en RIGHT_BRACE    &none  &none  &none   &trans
+&trans  &en PIPE  &en LESS_THAN  &en GREATER_THAN  &en SEMI      &en COLON                                &en LEFT_BRACKET  &en RIGHT_BRACKET  &none  &none  &none   &trans
+&trans  &en HASH  &kp RU_BSLH    &kp RU_FSLH       &kp RU_COLON  &kp RU_QMARK  &kp RU_COMMA    &kp UNDER  &en LEFT_BRACE    &en RIGHT_BRACE    &none  &none  &none   &trans
                                                    &trans        &mo 6         &trans          &trans     &trans            &trans
             >;
         };
