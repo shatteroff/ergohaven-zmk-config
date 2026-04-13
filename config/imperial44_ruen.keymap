@@ -159,8 +159,8 @@
         sym_ru {
             display-name = "Symbols";
             bindings = <
-&trans  &kp RU_FSLH     &kp RU_SLASH                &kp FSLH                    &en LA(RU_CYRILLIC_ZE)  &kp RU_DQT                       &kp LPAR          &kp RPAR           &none       &none       &trans  &trans
-&trans  &en LS(LA(N1))  &en LS(LA(RU_CYRILLIC_BE))  &en LA(LS(RU_CYRILLIC_YU))  &kp LS(N8)              &kp LS(N5)                       &kp LEFT_BRACKET  &en RIGHT_BRACKET  &kp LBKT    &kp RBKT    &none   &trans
+&trans  &kp RU_FSLH     &kp RU_SLASH                &kp FSLH                    &kp LA(RU_CYRILLIC_ZE)  &kp RU_DQT                       &kp LPAR          &kp RPAR           &none       &none       &trans  &trans
+&trans  &kp LS(LA(N1))  &kp LS(LA(RU_CYRILLIC_BE))  &kp LA(LS(RU_CYRILLIC_YU))  &kp LS(N8)              &kp LS(N5)                       &kp LEFT_BRACKET  &en RIGHT_BRACKET  &kp LBKT    &kp RBKT    &none   &trans
 &trans  &en HASH        &kp RU_BSLH                 &kp SLASH                   &kp LS(N6)              &kp RS(N7)  &trans    &kp UNDER  &en LEFT_BRACE    &en RIGHT_BRACE    &kp LA(N9)  &kp LA(N0)  &none   &trans
                                                                                 &trans                  &mo 6       &trans    &trans     &trans            &trans
             >;
