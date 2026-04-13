@@ -98,6 +98,13 @@
             #binding-cells = <0>;
             mods = <(MOD_RCTL)>;
         };
+
+        tap_dance_space: tap_dance_space {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_SPACE";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE>, <&lg_space>;
+        };
     };
 
     keymap {
@@ -129,10 +136,10 @@
 
         nav {
             bindings = <
-&kp CAPS  &kp GRAVE          &kp LG(LEFT_ARROW)  &kp UP    &kp LG(RIGHT_ARROW)  &tog 1                               &kp LA(R)  &kp N7  &kp N8  &kp N9  &kp N0   &trans
-&trans    &kp LC(LA(ENTER))  &kp LEFT            &kp DOWN  &kp RIGHT            &kp LG(LS(C))                        &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp DOT  &trans
-&trans    &trans             &kp LA(LEFT)        &kp CAPS  &kp LA(RIGHT)        &none          &kp DELETE    &trans  &kp MINUS  &kp N1  &kp N2  &kp N3  &trans   &trans
-                                                           &trans               &trans         &trans        &trans  &mo 6      &trans
+&kp CAPS  &kp GRAVE          &kp LG(LEFT_ARROW)  &kp UP    &kp LG(RIGHT_ARROW)  &tog 1                                  &kp LA(R)  &kp N7  &kp N8  &kp N9  &kp N0   &trans
+&trans    &kp LC(LA(ENTER))  &kp LEFT            &kp DOWN  &kp RIGHT            &kp LG(LS(C))                           &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp DOT  &trans
+&trans    &trans             &kp LA(LEFT)        &kp CAPS  &kp LA(RIGHT)        &tap_dance_space  &kp DELETE    &none   &kp MINUS  &kp N1  &kp N2  &kp N3  &trans   &trans
+                                                           &trans               &trans            &trans        &trans  &mo 6      &trans
             >;
 
             display-name = "Nav";
@@ -140,7 +147,7 @@
 
         sym_en {
             bindings = <
-&trans  &none     &none          &none             &kp SQT    &kp DQT                            &kp LPAR          &kp RPAR           &none  &none  &trans  &trans
+&none   &none     &none          &none             &kp SQT    &kp DQT                            &kp LPAR          &kp RPAR           &none  &none  &trans  &trans
 &trans  &kp PIPE  &kp LESS_THAN  &kp GREATER_THAN  &kp SEMI   &kp COLON                          &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &none  &none  &none   &trans
 &trans  &kp HASH  &kp BSLH       &kp FSLH          &kp COMMA  &kp DOT    &kp QMARK    &kp UNDER  &kp LEFT_BRACE    &kp RIGHT_BRACE    &none  &none  &none   &trans
                                                    &trans     &mo 6      &trans       &trans     &trans            &trans
@@ -161,10 +168,10 @@
 
         Jetbrains {
             bindings = <
-&kp LC(R)   &kp LC(O)       &kp LA(PAGE_UP)   &kp LS(LA(UP))    &kp LA(PAGE_DOWN)  &kp LG(FSLH)                               &kp LA(LG(T))  &kp LS(LG(DELETE))  &kp LS(LG(UP))    &kp LS(LC(UP))          &trans  &trans
-&kp LG(F9)  &kp LG(N)       &kp LS(LG(LBKT))  &kp LS(LA(DOWN))  &kp LS(LG(RBKT))   &kp LA(LG(L))                              &kp LA(ENTER)  &kp LA(LS(SPACE))   &kp LS(LG(DOWN))  &kp LS(LC(DOWN_ARROW))  &trans  &trans
-&trans      &kp LG(LS(F7))  &none             &kp LS(LC(J))     &kp LS(F6)         &kp LA(F1)     &kp LG(COMMA)    &trans     &kp LG(MINUS)  &kp LG(EQUAL)       &none             &none                   &trans  &trans
-                                                                &trans             &trans         &trans           &kp ENTER  &trans         &trans
+&kp LC(R)   &kp LC(O)       &kp LA(PAGE_UP)   &kp LS(LA(UP))    &kp LA(PAGE_DOWN)  &kp LG(FSLH)                                       &kp LA(LG(T))  &kp LS(LG(DELETE))  &kp LS(LG(UP))    &kp LS(LC(UP))          &trans  &trans
+&kp LG(F9)  &kp LG(N)       &kp LS(LG(LBKT))  &kp LS(LA(DOWN))  &kp LS(LG(RBKT))   &kp LA(LG(L))                                      &kp LA(ENTER)  &kp LA(LS(SPACE))   &kp LS(LG(DOWN))  &kp LS(LC(DOWN_ARROW))  &trans  &trans
+&trans      &kp LG(LS(F7))  &none             &kp LS(LC(J))     &kp LS(F6)         &kp LA(F1)     &kp LG(COMMA)    &trans             &kp LG(MINUS)  &kp LG(EQUAL)       &none             &none                   &trans  &trans
+                                                                &trans             &none          &trans           &kp LS(LG(ENTER))  &trans         &trans
             >;
         };
 
