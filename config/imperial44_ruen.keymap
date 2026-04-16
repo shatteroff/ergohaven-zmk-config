@@ -105,6 +105,46 @@
             #binding-cells = <0>;
             bindings = <&kp SPACE>, <&lg_tog>;
         };
+
+        screan_shot_tab_dance: screan_shot_tab_dance {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SCREAN_SHOT_TAB_DANCE";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LG(N4))>, <&kp LS(LG(N5))>;
+        };
+
+        end_td: end_td {
+            compatible = "zmk,behavior-tap-dance";
+            label = "END_TD";
+            #binding-cells = <0>;
+            bindings = <&kp LG(RIGHT_ARROW)>, <&kp LS(LG(RIGHT_ARROW))>;
+        };
+
+        home_td: home_td {
+            compatible = "zmk,behavior-tap-dance";
+            label = "HOME_TD";
+            #binding-cells = <0>;
+            bindings = <&kp LG(LEFT_ARROW)>, <&kp LG(LS(LEFT_ARROW))>;
+        };
+
+        my_sticky_layer: my_sticky_layer {
+            compatible = "zmk,behavior-sticky-key";
+            label = "MY_STICKY_LAYER";
+            bindings = <&mo>;
+            #binding-cells = <1>;
+            quick-release;
+            release-after-ms = <500>;
+        };
+
+        my_lt_osl: my_lt_osl {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MY_LT_OSL";
+            bindings = <&mo>, <&my_sticky_layer>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+        };
     };
 
     keymap {
@@ -136,10 +176,10 @@
 
         nav {
             bindings = <
-&kp CAPS  &kp GRAVE          &kp LG(LEFT_ARROW)  &kp UP                       &kp LG(RIGHT_ARROW)  &tog 1                               &kp LA(R)  &kp N7  &kp N8  &kp N9  &kp N0   &trans
-&trans    &kp LC(LA(ENTER))  &kp LEFT            &kp DOWN                     &kp RIGHT            &kp LG(LS(C))                        &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp DOT  &trans
-&trans    &trans             &kp LA(LEFT)        &kp LA(LG(LC(RIGHT_ARROW)))  &kp LA(RIGHT)        &none          &kp DELETE    &none   &kp MINUS  &kp N1  &kp N2  &kp N3  &trans   &trans
-                                                                              &trans               &trans         &trans        &trans  &mo 6      &trans
+&kp CAPS  &kp GRAVE          &home_td      &kp UP                       &end_td        &tog 1                                           &kp LA(R)  &kp N7  &kp N8  &kp N9  &kp N0   &trans
+&trans    &kp LC(LA(ENTER))  &kp LEFT      &kp DOWN                     &kp RIGHT      &kp LG(LS(C))                                    &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp DOT  &trans
+&trans    &my_lt_osl 5 7     &kp LA(LEFT)  &kp LA(LG(LC(RIGHT_ARROW)))  &kp LA(RIGHT)  &none          &kp DELETE                &none   &kp MINUS  &kp N1  &kp N2  &kp N3  &trans   &trans
+                                                                        &trans         &trans         &screan_shot_tab_dance    &trans  &mo 6      &trans
             >;
 
             display-name = "Nav";
