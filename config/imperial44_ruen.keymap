@@ -21,8 +21,8 @@
         };
 
         ley_jet {
-            bindings = <&mo 5>;
-            key-positions = <39 12>;
+            bindings = <&my_hold_tap_layers 5 8>;
+            key-positions = <39 38>;
         };
     };
 
@@ -99,47 +99,38 @@
             mods = <(MOD_RCTL)>;
         };
 
-        tap_dance_space: tap_dance_space {
+        my_space_td: my_space_td {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_SPACE";
+            label = "MY_SPACE_TD";
             #binding-cells = <0>;
             bindings = <&kp SPACE>, <&lg_tog>;
         };
 
-        screan_shot_tab_dance: screan_shot_tab_dance {
+        my_screan_shot_td: my_screan_shot_td {
             compatible = "zmk,behavior-tap-dance";
-            label = "SCREAN_SHOT_TAB_DANCE";
+            label = "MY_SCREAN_SHOT_TD";
             #binding-cells = <0>;
             bindings = <&kp LS(LG(N4))>, <&kp LS(LG(N5))>;
         };
 
-        end_td: end_td {
+        my_end_td: my_end_td {
             compatible = "zmk,behavior-tap-dance";
-            label = "END_TD";
+            label = "MY_END_TD";
             #binding-cells = <0>;
             bindings = <&kp LG(RIGHT_ARROW)>, <&kp LS(LG(RIGHT_ARROW))>;
         };
 
-        home_td: home_td {
+        my_home_td: my_home_td {
             compatible = "zmk,behavior-tap-dance";
-            label = "HOME_TD";
+            label = "MY_HOME_TD";
             #binding-cells = <0>;
             bindings = <&kp LG(LEFT_ARROW)>, <&kp LG(LS(LEFT_ARROW))>;
         };
 
-        my_sticky_layer: my_sticky_layer {
-            compatible = "zmk,behavior-sticky-key";
-            label = "MY_STICKY_LAYER";
-            bindings = <&mo>;
-            #binding-cells = <1>;
-            quick-release;
-            release-after-ms = <500>;
-        };
-
-        my_lt_osl: my_lt_osl {
+        my_hold_tap_layers: my_hold_tap_layers {
             compatible = "zmk,behavior-hold-tap";
-            label = "MY_LT_OSL";
-            bindings = <&mo>, <&my_sticky_layer>;
+            label = "MY_HOLD_TAP_LAYERS";
+            bindings = <&mo>, <&sl>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -152,10 +143,10 @@
 
         en {
             bindings = <
-&kp ESC    &kp Q  &kp W  &kp E  &kp R         &kp T                                 &kp Y  &kp U          &kp I      &kp O    &kp P     &kp BACKSPACE
-&kp TAB    &kp A  &kp S  &kp D  &kp F         &kp G                                 &kp H  &kp J          &kp K      &kp L    &kp SEMI  &kp RIGHT_CONTROL
-&sk LSHFT  &kp Z  &kp X  &kp C  &kp V         &kp B  &kp LBKT            &kp RBKT   &kp N  &kp M          &kp COMMA  &kp DOT  &kp SQT   &kp RSHFT
-                                &kp LEFT_GUI  &mo 2  &tap_dance_space    &kp ENTER  &mo 3  &kp RIGHT_ALT
+&kp ESC    &kp Q  &kp W  &kp E  &kp R         &kp T                             &kp Y  &kp U          &kp I      &kp O    &kp P     &kp BACKSPACE
+&kp TAB    &kp A  &kp S  &kp D  &kp F         &kp G                             &kp H  &kp J          &kp K      &kp L    &kp SEMI  &kp RIGHT_CONTROL
+&sk LSHFT  &kp Z  &kp X  &kp C  &kp V         &kp B  &kp LBKT        &kp RBKT   &kp N  &kp M          &kp COMMA  &kp DOT  &kp SQT   &kp RSHFT
+                                &kp LEFT_GUI  &mo 2  &my_space_td    &kp ENTER  &mo 3  &kp RIGHT_ALT
             >;
 
             display-name = "Base";
@@ -176,10 +167,10 @@
 
         nav {
             bindings = <
-&kp CAPS  &kp GRAVE          &home_td      &kp UP                       &end_td        &tog 1                                           &kp LA(R)  &kp N7  &kp N8  &kp N9  &kp N0   &trans
-&trans    &kp LC(LA(ENTER))  &kp LEFT      &kp DOWN                     &kp RIGHT      &kp LG(LS(C))                                    &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp DOT  &trans
-&trans    &my_lt_osl 5 7     &kp LA(LEFT)  &kp LA(LG(LC(RIGHT_ARROW)))  &kp LA(RIGHT)  &none          &kp DELETE                &none   &kp MINUS  &kp N1  &kp N2  &kp N3  &trans   &trans
-                                                                        &trans         &trans         &screan_shot_tab_dance    &trans  &mo 6      &trans
+&kp CAPS  &kp GRAVE                &my_home_td   &kp UP                       &my_end_td     &tog 1                                       &kp LA(R)  &kp N7  &kp N8  &kp N9  &kp N0   &trans
+&trans    &kp LC(LA(ENTER))        &kp LEFT      &kp DOWN                     &kp RIGHT      &kp LG(LS(C))                                &kp EQUAL  &kp N4  &kp N5  &kp N6  &kp DOT  &trans
+&trans    &my_hold_tap_layers 5 7  &kp LA(LEFT)  &kp LA(LG(LC(RIGHT_ARROW)))  &kp LA(RIGHT)  &none          &kp DELETE            &none   &kp MINUS  &kp N1  &kp N2  &kp N3  &trans   &trans
+                                                                              &trans         &trans         &my_screan_shot_td    &trans  &mo 6      &trans
             >;
 
             display-name = "Nav";
@@ -206,12 +197,12 @@
             >;
         };
 
-        Jetbrains {
+        Jetbrains_hold {
             bindings = <
-&kp LC(R)   &kp LC(O)       &kp LA(PAGE_UP)   &kp LS(LA(UP))    &kp LA(PAGE_DOWN)  &kp LG(FSLH)                                       &kp LA(LG(T))  &kp LS(LG(DELETE))  &kp LS(LG(UP))    &kp LS(LC(UP))          &trans  &trans
-&kp LG(F9)  &kp LG(N)       &kp LS(LG(LBKT))  &kp LS(LA(DOWN))  &kp LS(LG(RBKT))   &kp LA(LG(L))                                      &kp LA(ENTER)  &kp LA(LS(SPACE))   &kp LS(LG(DOWN))  &kp LS(LC(DOWN_ARROW))  &trans  &trans
-&trans      &kp LG(LS(F7))  &none             &kp LS(LC(J))     &kp LS(F6)         &kp LA(F1)     &kp LG(COMMA)    &trans             &kp LG(MINUS)  &kp LG(EQUAL)       &none             &none                   &trans  &trans
-                                                                &trans             &none          &trans           &kp LS(LG(ENTER))  &trans         &trans
+&trans  &none  &kp LG(LS(UP_ARROW))    &kp LS(LA(UP))    &kp LS(LC(UP_ARROW))    &kp LG(RIGHT_BRACKET)                    &kp LG(LS(P))  &kp LG(LS(Y))  &kp LS(LG(K))  &none  &trans  &trans
+&trans  &none  &kp LS(LG(DOWN_ARROW))  &kp LS(LA(DOWN))  &kp LS(LC(DOWN_ARROW))  &kp LG(LEFT_BRACKET)                     &none          &none          &none          &none  &trans  &trans
+&trans  &none  &none                   &kp LC(LS(J))     &none                   &none                  &none     &none   &none          &none          &none          &none  &trans  &trans
+                                                         &trans                  &none                  &trans    &trans  &trans         &trans
             >;
         };
 
@@ -233,6 +224,15 @@
 &trans  &kp RU_BSLH  &kp LPAR      &kp MINUS     &kp RPAR     &kp PLUS                                  &kp RU_PERCENT  &en LBRC  &kp RU_SEMI  &kp RBRC  &kp EXCL    &kp RU_QUESTION
 &trans  &en HASH     &kp RU_ASTRK  &kp RU_COLON  &kp RU_FSLH  &kp RU_NUMERO  &kp EXCLAMATION    &trans  &trans          &en PIPE  &en TILDE    &en AMPS  &kp RU_DOT  &trans
                                                  &trans       &mo 6          &trans             &trans  &trans          &trans
+            >;
+        };
+
+        Jetbrains_one_click {
+            bindings = <
+&trans  &kp LC(O)       &none  &kp LA(PAGE_UP)  &kp LA(PAGE_DOWN)  &kp LG(FSLH)                                      &kp LA(LG(T))  &kp LS(LG(DELETE))  &kp LC(R)      &none  &trans  &trans
+&trans  &kp LG(N)       &none  &none            &kp LA(LG(L))      &none                                             &kp LA(ENTER)  &kp LA(LS(SPACE))   &kp LG(F9)     &none  &trans  &trans
+&trans  &kp LG(LS(F7))  &none  &none            &kp LS(F6)         &kp LA(F1)    &kp LG(COMMA)    &trans             &kp LG(MINUS)  &kp LG(EQUAL)       &kp LS(LC(R))  &none  &trans  &trans
+                                                &trans             &none         &trans           &kp LS(LG(ENTER))  &trans         &trans
             >;
         };
     };
